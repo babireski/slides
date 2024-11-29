@@ -1,0 +1,285 @@
+\documentclass[table]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[alf]{abntex2cite}
+\usepackage{udesc}
+\usepackage{amsfonts,amsmath,amssymb,mathtools}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage[ddmmyyyy]{datetime}
+\usepackage{hyperref, url}
+\usepackage{graphicx}
+\usepackage{bussproofs}
+\usepackage{multirow}
+\usepackage{changepage}
+\usepackage{ragged2e}
+
+\newcommand{\smallsquare}{{\scalebox{0.45}{$\square$}}}
+\newcommand{\uglyphi}{\phi} % mantendo o \phi velho
+\renewcommand \phi{\varphi}
+\let \emptyset \varnothing
+
+\graphicspath{{Figuras/}}
+\setbeamertemplate{frametitle continuation}{}
+
+% suprimindo warnings do hyperref
+\pdfstringdefDisableCommands{%
+  \def\\{}%
+  \def\texttt#1{<#1>}%
+  \def\smallskip{}%
+  \def\medskip{}%
+}
+
+\renewcommand{\figurename}{Figura}
+\sloppy
+\title[]{Uma formalização assistida por computador da interpretação modal do sistema intuicionista}
+
+\author[Babireski]{
+    Elian Gustavo Chorny Babireski\\\smallskip
+    {\scriptsize Universidade do Estado de Santa Catarina \\\smallskip
+    \vspace{-2mm}
+    \texttt{elian.babireski@gmail.com}\\\medskip
+    {Orientadora: Doutora Karina Girardi Roggia}\\
+    {Coorientador: Mestre Paulo Henrique Torrens}
+    }
+}
+
+\date{\today}
+
+\begin{document}
+
+\setlength{\abovedisplayskip}{-5pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+
+    \begin{frame}
+        \titlepage
+    \end{frame}
+
+    \begin{frame}[allowframebreaks]{Sumário}
+        \tableofcontents
+    \end{frame}
+
+    \section[]{Introdução}
+    \begin{frame}{Introdução}
+        Teste.
+    \end{frame}
+
+    \begin{frame}{Introdução}
+        \justifying{}
+        Kobayashi (\citeyear{Kobayashi}) sugere a interpretação abaixo.
+        \begin{block}{Interpretação da possibilidade}
+            \begin{equation*}
+            \begin{aligned}[t]
+                \alpha\to\Diamond\alpha& \\
+                \Diamond\Diamond\alpha\to\Diamond\alpha&
+            \end{aligned}
+            \qquad
+            \begin{aligned}[t]
+                &\eta\mathrel{\colon}1_{C}\to T\\
+                &\mu\mathrel{\colon}T^2\to T
+            \end{aligned}
+            \end{equation*}
+        \end{block}
+
+        \begin{block}{Interpretação da necessidade}
+            \begin{equation*}
+            \begin{aligned}[t]
+                \Box\alpha\to\alpha& \\
+                \Box\alpha\to\Box\Box\alpha&
+            \end{aligned}
+            \qquad
+            \begin{aligned}[t]
+                &\epsilon\mathrel{\colon}T\to 1_{C}\\
+                &\delta\mathrel{\colon}T\to T^2
+            \end{aligned}
+            \end{equation*}
+        \end{block}
+    \end{frame}
+
+    \section[]{Fundamentos}
+    \begin{frame}{Fundamentos}
+        \justifying{}
+        Neste trabalho, usaremos uma definição de sistema provida por Béziau~(\citeyear{Beziau}) e uma definição de tradução entre sistemas provida por Coniglio~(\citeyear{Coniglio}).
+        \begin{block}{Sistema}
+            \justifying{}
+            Um sistema consiste num par $\mathfrak{L}=\langle\mathcal{L},{\vdash}\rangle$, sendo $\mathcal{L}$ um conjunto e ${\vdash}\in\wp(\mathcal{L})\times\mathcal{L}$ uma relação sobre o produto cartesiano do conjunto das partes da linguagem e a linguagem, sem demais condições.
+        \end{block}
+
+        \begin{block}{Tradução}
+            \justifying{}
+            Sejam $\mathfrak{L}_1=\langle\mathcal{L}_1,{\vdash_1}\rangle$ e $\mathfrak{L}_2=\langle\mathcal{L}_2,{\vdash}_2\rangle$ sistemas. Uma tradução primeiro sistema ao segundo consiste numa função $\bullet^*:\mathcal{L}_1\to\mathcal{L}_2$ de modo que $\Gamma\vdash_1\alpha$ se e somente se $\Gamma^*\vdash_2\alpha^*$.
+        \end{block}
+    \end{frame}
+
+    \section[]{Linguagens}
+    \begin{frame}{Linguagens}
+        \justifying{}
+        Neste trabalho, usaremos uma definição das linguagens dos sistemas intuicionista e modais conforme provida por Troelstra e Schwichtenberg~(\citeyear{Troelstra}).
+        \begin{block}{$\mathcal{L}_\mathfrak{I}$}
+            \justifying{}
+            A linguagem do sistema intuicionista $\mathfrak{I}$, denotada $\mathcal{L}_\mathfrak{I}$, pode ser induzida a partir da assinatura $\Sigma_\mathfrak{I} = \langle\mathcal{P}, \mathcal{C}_\mathfrak{I}\rangle$, onde $\mathcal{P}=\{p_i\mid i\in\mathbb{N}\}$ e $\mathcal{C}_\mathfrak{I} = \{\bot^0, \wedge^2, \vee^2, \to^2\}$.
+        \end{block}
+        \begin{block}{$\mathcal{L}_\mathfrak{M}$}
+            \justifying{}
+            A linguagem dos sistemas modais $\mathfrak{M}$, denotada $\mathcal{L}_\mathfrak{M}$, pode ser induzida a partir da assinatura $\Sigma_\mathfrak{M} = \langle\mathcal{P}, \mathcal{C}_\mathfrak{M}\rangle$, onde $\mathcal{P}=\{p_i\mid i\in\mathbb{N}\}$ e $\mathcal{C}_\mathfrak{M} = \{\bot^0, \Box^1, \wedge^2, \vee^2, \to^2\}$.
+        \end{block}
+    \end{frame}
+
+    \section[]{Axiomatizações}
+    \begin{frame}{Axiomatizações}
+        \justifying{}
+        Primeiramente, consideremos a seguinte axiomatização $\mathcal{H}_\mathfrak{M}=\langle\mathcal{A}_\mathfrak{M},\mathcal{R}_\mathfrak{M}\rangle$ para o sistema minimal, conforme definido por  Troelstra e Schwichtenberg~(\citeyear{Troelstra}).
+        \begin{block}{$\mathcal{H}_\mathfrak{M}$}
+            \begin{align*}
+                &\alpha \to \beta \to \alpha & {(A_1)} \\
+                &(\alpha \to \beta \to \gamma) \to (\alpha \to \beta) \to \alpha \to \gamma & {(A_2)} \\
+                &\alpha \to \beta \to \alpha \land \beta & {(A_3)} \\
+                &\alpha \land \beta \to \alpha & {(A_4)} \\
+                &\alpha \land \beta \to \beta & {(A_5)} \\
+                &\alpha \to \alpha \lor \beta & {(A_6)} \\
+                &\beta \to \alpha \lor \beta & {(A_7)} \\
+                &(\alpha \to \gamma) \to (\beta \to \gamma) \to \alpha \lor \beta \to \gamma & {(A_8)} \\
+                &\text{Se }\Gamma\vdash\alpha\text{ e }\Gamma\vdash\alpha\to\beta\text{ então, }\Gamma\vdash\beta & {(R_1)}
+            \end{align*}
+        \end{block}
+    \end{frame}
+
+    \begin{frame}{Axiomatizações}
+        \justifying{}
+        Estendo a definição anterior, chega-se às axiomatizações do sistema intuicionista e modal S4, conforme definido por Troelstra e Schwichtenberg~(\citeyear{Troelstra}) e Hakli e Negri~(\citeyear{Hakli}).
+        \begin{block}{$\mathcal{H}_\mathfrak{I}$}
+            \begin{align*}
+                &\bot \to \alpha & {(A_\bot)}
+            \end{align*}
+        \end{block}
+        \begin{block}{$\mathcal{H}_{S4}$}
+            \begin{align*}
+                &\neg\neg\alpha \to \alpha & {(A_\neg)}\\
+                &\Box(\alpha \to \beta)\to\Box\alpha\to\Box\beta & {(B_1)}\\
+                &\Box\alpha\to\alpha & {(B_2)}\\
+                &\Box\Box\alpha\to\Box\alpha & {(B_3)}\\
+                &\text{Se }{\vdash\alpha}\text{ então, }\Gamma\vdash\Box\alpha& {(R_2)}
+            \end{align*}
+        \end{block}
+    \end{frame}
+
+    \section[]{Metateoremas}
+    \begin{frame}{Metateoremas}
+        \justifying{}
+        Alguns dos metateoremas provados neste trabalho.
+        \begin{block}{Metateorema da dedução}
+            Se $\Gamma\cup\{\alpha\}\vdash\beta$, então $\Gamma\vdash\alpha\to\beta$.
+        \end{block}
+        \begin{block}{Metateorema da generalização da necessitação}
+            Se $\Box\Gamma\vdash\alpha$, então $\Box\Gamma\vdash\Box\alpha$.
+        \end{block}
+        \begin{block}{Metateorema da dedução estrita}
+            Se $\Box\Gamma\cup\{\alpha\}\vdash\beta$, então $\Box\Gamma\vdash\Box(\alpha\to\beta)$.
+        \end{block}
+        \begin{block}{Metateorema do \emph{modus ponens} estrito}
+            Se $\Gamma\vdash\alpha$ e $\Gamma\vdash\Box(\alpha\to\beta)$, então $\Gamma\vdash\beta$.
+        \end{block}
+    \end{frame}
+
+    \section[]{Traduções}
+    \begin{frame}{Traduções}
+        \justifying{}
+        Neste trabalho, consideremos duas traduções equivalentes providas por Troelstra e Schwichtenberg~(\citeyear{Troelstra}).
+        \begin{block}{Traduções}
+            \begin{equation*}
+            \begin{aligned}[t]
+                a^\circ                       & \coloneqq a \\
+                \bot^\circ                    & \coloneqq \bot \\
+                {(\alpha \wedge \beta)}^\circ & \coloneqq \alpha^\circ \wedge \beta^\circ \\
+                {(\alpha \vee \beta)}^\circ   & \coloneqq \Box \alpha^\circ \vee \Box \beta^\circ \\
+                {(\alpha \to \beta)}^\circ    & \coloneqq \Box \alpha^\circ \to \beta^\circ
+            \end{aligned}
+            \qquad
+            \begin{aligned}[t]
+                a^\smallsquare                       & \coloneqq \Box a \\
+                \bot^\smallsquare                    & \coloneqq \bot \\
+                {(\alpha \wedge \beta)}^\smallsquare & \coloneqq \alpha^\smallsquare \wedge \beta^\smallsquare \\
+                {(\alpha \vee \beta)}^\smallsquare   & \coloneqq \alpha^\smallsquare \vee \beta^\smallsquare \\
+                {(\alpha \to \beta)}^\smallsquare    & \coloneqq \Box(\alpha^\smallsquare \to \beta^\smallsquare)
+            \end{aligned}
+            \end{equation*}
+        \end{block}
+
+        \begin{block}{Teorema do isomorfismo entre traduções}
+            $\vdash\Box\alpha^\circ\leftrightarrow\alpha^\smallsquare$.
+        \end{block}
+    \end{frame}
+
+    \section[]{Propriedades}
+    \begin{frame}{Propriedades}
+        \justifying{}
+        \begin{block}{Lema}
+            $\vdash\alpha^\smallsquare\to\Box\alpha^\smallsquare$.
+        \end{block}
+        \begin{block}{Correção}
+            Se $\Gamma\vdash_\mathfrak{I}\alpha$, então $\Gamma^\smallsquare\vdash_{S4}\alpha^\smallsquare$.
+        \end{block}
+        \begin{block}{Teorema}
+            $\vdash\alpha\to\Diamond\alpha$.
+        \end{block}
+        \begin{block}{Teorema}
+            $\vdash\Diamond\Diamond\alpha\to\Diamond\alpha$.
+        \end{block}
+    \end{frame}
+
+    \section[]{Considerações}
+    \begin{frame}{Considerações}
+        \justifying{}
+        \begin{itemize}
+            \justifying{}
+            \item Devido ao uso da axiomatização, as provas de Troelstra e Schwichtenberg~(\citeyear{Troelstra}) precisaram ser reescritas;
+            \item Não foi apresentada a prova manual da completude das traduções;
+            \item O que foi desenvolvido manualmente fornece uma boa base para o desenvolvimento das demonstrações em assistentes de provas.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Planejamento}
+        \begin{enumerate}
+            \item Provar manualmente a completude das traduções;
+            \item Definir, na biblioteca modal, as traduções apresentadas;
+            \item Provar, na biblioteca modal, os metateoremas apresentados;
+            \item Provar, na biblioteca modal, que as traduções equivalem;
+            \item Provar, na biblioteca modal, a correção das traduções;
+            \item Provar, na biblioteca modal, a completude das traduções.
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Planejamento}
+        \setcounter{table}{1}
+        \begin{table}[htbp]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+              \hline
+              \multirow{2}{*}{\textbf{\small{Item}}} & \textbf{\small{2024}} & \multicolumn{6}{c|}{\textbf{\small{2025}}} \\
+              \cline{2-8}
+              & \textbf{Dez} & \textbf{Jan} & \textbf{Fev} & \textbf{Mar} & \textbf{Abr} & \textbf{Maio} & \textbf{Jun} \\
+              \hline
+              \textbf{\small{1}}  & \cellcolor{gray} & \cellcolor{gray} &  &  &  &  & \\
+              \hline
+              \textbf{\small{2}}  &  & \cellcolor{gray} &  &  &  &  & \\
+              \hline
+              \textbf{\small{3}}  &  & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & &  & \\
+              \hline
+              \textbf{\small{4}}  &  &  & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} &  & \\
+              \hline
+              \textbf{\small{5}}  &  &  &  & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray} & \\
+              \hline
+              \textbf{\small{6}}  &  &  &  &  & \cellcolor{gray} & \cellcolor{gray} & \cellcolor{gray}\\
+              \hline
+            \end{tabular}
+          \end{table}
+    \end{frame}
+
+    \section[]{Referências}
+    \begin{frame}[allowframebreaks]{Referências}
+        \bibliography{referencias}
+    \end{frame}
+
+\end{document}
