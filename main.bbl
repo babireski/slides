@@ -5,15 +5,21 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{v-1.9.7 }
 
-\bibitem[Béziau 1994]{Beziau}
-\abntrefinfo{Béziau}{BéZIAU}{1994}
-{BéZIAU, J.-Y. Universal logic.
+\bibitem[B{\'{e}}ziau 1994]{Beziau}
+\abntrefinfo{B{\'{e}}ziau}{B{\'{E}}ZIAU}{1994}
+{B{\'{E}}ZIAU, J.-Y. Universal logic.
 \emph{Logica}, 1994.}
 
 \bibitem[Coniglio 2005]{Coniglio}
 \abntrefinfo{Coniglio}{CONIGLIO}{2005}
 {CONIGLIO, M.~E. Towards a stronger notion of translation between logics.
 \emph{Manuscrito}, 2005.}
+
+\bibitem[G{\"{o}}del 1933]{Goedel}
+\abntrefinfo{G{\"{o}}del}{G{\"{O}}DEL}{1933}
+{G{\"{O}}DEL, K. Eine {I}nterpretation des intuitionistischen
+  {A}ussagenkalküls.
+\emph{Ergebnisse eines {M}athematischen {K}olloquiums}, 1933.}
 
 \bibitem[Hakli e Negri 2012]{Hakli}
 \abntrefinfo{Hakli e Negri}{HAKLI; NEGRI}{2012}
@@ -24,6 +30,28 @@
 \abntrefinfo{Kobayashi}{KOBAYASHI}{1997}
 {KOBAYASHI, S. Monad as modality.
 \emph{Theoretical Computer Science}, 1997.}
+
+\bibitem[Nunes, Roggia e Torrens 2024]{Nunes}
+\abntrefinfo{Nunes, Roggia e Torrens}{NUNES; ROGGIA; TORRENS}{2024}
+{NUNES, M.~A.; ROGGIA, K.~G.; TORRENS, P.~H. Soundness-preserving fusion of
+  modal logics in \textsc{coq}. In:  \emph{Proceedings of the XXVI Brazilian
+  Symposium on Formal Methods}. [S.l.: s.n.], 2024.}
+
+\bibitem[Sehnem 2023]{Sehnem}
+\abntrefinfo{Sehnem}{SEHNEM}{2023}
+{SEHNEM, A.
+\emph{Formalização da tradução das lógicas clássica e intuicionista para
+  a lógica linear em \textsc{coq}}.
+Disserta\c{c}\~{a}o (Trabalho de conclusão de curso) --- Universidade do
+  Estado de Santa Catarina, 2023.}
+
+\bibitem[Silveira et al. 2022]{Silveira}
+\abntrefinfo{Silveira et al.}{SILVEIRA et al.}{2022}
+{SILVEIRA, A. A.~d. et al. A sound deep embedding of arbitrary normal modal
+  logics in \textsc{coq}. In:  \emph{Proceedings of the XXVI Brazilian
+  Symposium on Programming Languages}. [S.l.]: Association for Computing
+  Machinery, 2022.
+ISBN 9781450397445.}
 
 \bibitem[Troelstra e Schwichtenberg 2000]{Troelstra}
 \abntrefinfo{Troelstra e Schwichtenberg}{TROELSTRA; SCHWICHTENBERG}{2000}
